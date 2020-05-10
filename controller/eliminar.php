@@ -3,7 +3,7 @@ require('./config/database.php');
 $db = new Database();
 
 
-$sql = "DELETE FROM productos WHERE id='{$id}' OR codigo='{$id}' ";
+$sql = "DELETE FROM productos WHERE codigo='{$id}' ";
 
 if ( $db->conexion->query($sql)) {
 

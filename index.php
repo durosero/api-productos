@@ -15,6 +15,10 @@ $router->map('GET', '/listar',  function () {
     require __DIR__ . '/controller/listar.php';
 });
 
+$router->map('GET', '/ver/[i:num]',  function ($id) {
+    require __DIR__ . '/controller/ver.php';
+});
+
 //===============================================
 
 $router->map('DELETE', '/eliminar/[i:num]',  function ($id) {
@@ -26,14 +30,11 @@ $router->map('POST', '/guardar',  function () {
     require __DIR__ . '/controller/guardar.php';
 });
 
-$router->map('GET', '/ver/[i:num]',  function ($id) {
-    require __DIR__ . '/controller/ver.php';
-});
+//================================================
 
-$router->map('PUT', '/actualizar',  function () {
+$router->map('POST', '/actualizar/[i:num]',  function ($id) {
     require __DIR__ . '/controller/actualizar.php';
 });
-
 
 
 $match = $router->match();
