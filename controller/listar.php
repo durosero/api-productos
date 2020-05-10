@@ -14,14 +14,20 @@ if ($resultado = $db->conexion->query($sql)) {
     while ($fila = $resultado->fetch_object()) {
         $datos[] = $fila;
     }
-    $resultado->close();
+
     header('Content-Type: application/json');
-    echo json_encode($datos);
+    echo json_encode(array(
+        'error' =>  FALSE,
+        'message' =>  "Se han encontrado {$resultado->num_rows} resultados",
+        'data' => $datos    
+    ));
+    $resultado->close();
 } else {
     header('Content-Type: application/json');
     echo json_encode(array(
         'error' =>  TRUE,
-        'message' =>  $db->conexion->error
+        'message' =>  $db->conexion->error,
+        'sql' => $sql
     ));
 }
 $db->conexion->close();

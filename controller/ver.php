@@ -12,12 +12,16 @@ if ($resultado = $db->conexion->query($sql)) {
     }
     $resultado->close();
     header('Content-Type: application/json');
-    echo json_encode($datos);
+    echo json_encode(array(
+        'error' =>  FALSE,
+        'data' => $datos
+    ));
 } else {
     header('Content-Type: application/json');
     echo json_encode(array(
         'error' =>  TRUE,
-        'message'=>  $db->conexion->error
+        'message'=>  $db->conexion->error,
+        'sql' => $sql
     ));
 }
 $db->conexion->close();
