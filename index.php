@@ -19,6 +19,17 @@ $router->setBasePath('/productos');
 //     ROUTES
 //=============================
 
+$router->map('GET', '/',  function () {
+    header('Content-Type: application/json');
+    echo json_encode(array(
+        'error' =>  FALSE,
+        'message'=>  "Hola mundo",
+        'developer' => "Duvan Rosero"
+    ));
+});
+
+//===============================================
+
 $router->map('GET', '/listar/[*:num]',  function ($num) {
     require __DIR__ . '/controller/listar.php';
 });
