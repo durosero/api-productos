@@ -8,7 +8,7 @@ Todas las rutas devuelven un objeto con estas propiedades:
     "message": "Hola mundo"
 }`
 
-Si el endpoint devuelve datos esta se muestra en una propiedad adicional llamada `data`, en la siguiente tabla mostramos las rutas disponibles para el manejo de productos.
+Si el endpoint devuelve datos estos se muestran en una propiedad adicional llamada `data`, en la siguiente tabla mostramos las rutas disponibles para el manejo de productos.
 
 | RUTA| METODO|PARAMETROS|RESPUESTA|
 | ----- | ---- |---- |---- |
@@ -21,7 +21,7 @@ Si el endpoint devuelve datos esta se muestra en una propiedad adicional llamada
 | /eliminar/codigo | DELETE | codigo | Objeto respuesta|
 
 ### Base de datos
-El codigo sql para contruir la base de datos esta en el archivo con extencion .txt
+El codigo sql para construir la base de datos está en el archivo con extención .txt
 
 Creamos la base de datos:
 `CREATE DATABASE /*!32312 IF NOT EXISTS*/ api-productos /*!40100 DEFAULT CHARACTER SET utf8 */;`
