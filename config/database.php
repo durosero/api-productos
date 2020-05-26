@@ -32,6 +32,7 @@ class Database {
                     . $this->conexion->connect_error);
                     exit;
         }
+        $this->conexion->set_charset("utf8");
         return $this->conexion;
     }
 
