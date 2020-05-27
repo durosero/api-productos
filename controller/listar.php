@@ -7,7 +7,7 @@ if (isset($num)) {
     $numero = $num;
 }
 
-$sql = "SELECT * FROM productos limit {$numero} ";
+$sql = "SELECT * FROM productos ORDER BY fecha DESC limit {$numero} ";
 
 if ($resultado = $db->conexion->query($sql)) {
     $datos = array();
