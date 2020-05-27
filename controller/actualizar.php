@@ -3,7 +3,7 @@ require('./config/database.php');
 $db = new Database();
 
 
-$sql = "UPDATE productos SET codigo='{$_POST['codigo']}', descripcion='{$_POST['descripcion']}', precio1='{$_POST['precio1']}' WHERE codigo='{$id}' ";
+$sql = "UPDATE productos SET codigo='{$_POST['codigo']}', descripcion='{$_POST['descripcion']}', precio1='{$_POST['precio1']}' WHERE id='{$id}' ";
 
 if ( $db->conexion->query($sql)) {
 

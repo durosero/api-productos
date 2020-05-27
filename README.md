@@ -17,7 +17,7 @@ Si el endpoint devuelve datos estos se muestran en una propiedad adicional llama
 | /listar/numero | GET | numero | Arreglo de Objetos|
 | /listar/numero | GET | numero | Arreglo de Objetos|
 | /guardar | POST | codigo, descripcion, precio1 | Objeto respuesta|
-| /actualizar/codigo | POST | codigo, descripcion, precio1 | Objeto respuesta|
+| /actualizar/id | POST | codigo, descripcion, precio1 | Objeto respuesta|
 | /eliminar/codigo | DELETE | codigo | Objeto respuesta|
 
 ### Base de datos
