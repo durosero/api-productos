@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Conte
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 $method = $_SERVER['REQUEST_METHOD'];
-if($method == "OPTIONS") {
+if ($method == "OPTIONS") {
     die();
 }
 
@@ -23,7 +23,7 @@ $router->map('GET', '/',  function () {
     header('Content-Type: application/json');
     echo json_encode(array(
         'error' =>  FALSE,
-        'message'=>  "Hola mundo",
+        'message' =>  "Hola mundo",
         'developer' => "Duvan Rosero"
     ));
 });
@@ -59,6 +59,34 @@ $router->map('POST', '/actualizar/[i:num]',  function ($id) {
 });
 
 
+//================================================
+
+$router->map('POST', '/upload',  function () {
+    require __DIR__ . '/controller/upload.php';
+});
+
+//visualizamos la imagen
+$router->map('GET', '/file/[*:name]',  function ($name) {
+    $path_temp = "./data/img";
+    $fichero = $path_temp . "/" . $name;
+    if (file_exists($fichero)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: '.mime_content_type($fichero) );
+        header('Content-Length: ' . filesize($fichero));
+        readfile($fichero);
+        exit;
+    } else {
+        $response = array(
+            'message' => "No se encontró el archivo",
+            'error' => TRUE
+        );
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
+});
+
+//================================================
+
 $match = $router->match();
 if ($match && is_callable($match['target'])) {
     call_user_func_array($match['target'], $match['params']);
@@ -67,6 +95,6 @@ if ($match && is_callable($match['target'])) {
     header('Content-Type: application/json');
     echo json_encode(array(
         'error' =>  TRUE,
-        'message'=>  "Ruta no encontrada"
+        'message' =>  "Ruta no encontrada"
     ));
 }
