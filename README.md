@@ -19,6 +19,8 @@ Si el endpoint devuelve datos estos se muestran en una propiedad adicional llama
 | /guardar | POST | codigo, descripcion, precio1 | Objeto respuesta|
 | /actualizar/id | POST | codigo, descripcion, precio1 | Objeto respuesta|
 | /eliminar/codigo | DELETE | codigo | Objeto respuesta|
+| /upload | POST | file | Objeto respuesta|
+| /file/nombreimagen | GET | nombreimagen | Archivo |
 
 ### Base de datos
 El codigo sql para construir la base de datos está en el archivo con extención .txt
@@ -30,15 +32,17 @@ Borramos la tabla si existe
 `DROP TABLE IF EXISTS productos;`
 
 Creamos la tabla productos:
-`CREATE TABLE productos (
+`
+CREATE TABLE productos (
   id int(11) NOT NULL AUTO_INCREMENT,
-  codigo varchar(50) DEFAULT NULL,
-  descripcion varchar(255) DEFAULT NULL,
-  precio1 varchar(255) DEFAULT NULL,
-  precio2 varchar(255) DEFAULT NULL,
-  precio3 varchar(255) DEFAULT NULL,
+  codigo varchar(50) CHARACTER SET utf32 DEFAULT NULL,
+  descripcion varchar(255) CHARACTER SET utf32 DEFAULT NULL,
+  precio1 varchar(255) CHARACTER SET utf32 DEFAULT NULL,
+  precio2 varchar(255) CHARACTER SET utf32 DEFAULT NULL,
+  precio3 varchar(255) CHARACTER SET utf32 DEFAULT NULL,
+  imagen text,
   fecha timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   UNIQUE KEY codigo_UNIQUE (codigo)
-) ENGINE=InnoDB AUTO_INCREMENT=22045 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB AUTO_INCREMENT=22064 DEFAULT CHARSET=utf8;
 `
